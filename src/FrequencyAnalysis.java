@@ -1,27 +1,70 @@
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.Scanner;
+
 
 public class FrequencyAnalysis {
-    public static void main (String [] args){
+    public static void main(String[] args) {
         // Cipher Character Analysing
-        String cipherText = "GFS WMY OG LGDVS MF SFNKYHOSU ESLLMRS, PC WS BFGW POL DMFRQMRS, PL OG CPFU M UPCCSKSFO HDMPFOSXO GC OIS" +
-                " LMES DMFRQMRS DGFR SFGQRI OG CPDD GFS LISSO GK LG, MFU OISF WS NGQFO OIS GNNQKKSFNSL GC SMNI DSOOSK. WS NMDD OIS " +
-                "EGLO CKSJQSFODY GNNQKKPFR DSOOSK OIS 'CPKLO', OIS FSXO EGLO GNNQKKPFR DSOOSK OIS 'LSNGFU' OIS CGDDGWPFR EGLO " +
-                "GNNQKKPFR DSOOSK OIS 'OIPKU', MFU LG GF, QFOPD WS MNNGQFO CGK MDD OIS UPCCSKSFO DSOOSKL PF OIS HDMPFOSXO LMEHDS." +
-                " OISF WS DGGB MO OIS NPHISK OSXO WS WMFO OG LGDVS MFU WS MDLG NDMLLPCY POL LYEAGDL. WS CPFU OIS EGLO GNNQKKPFR" +
-                " LYEAGD MFU NIMFRS PO OG OIS CGKE GC OIS 'CPKLO' DSOOSK GC OIS HDMPFOSXO LMEHDS, OIS FSXO EGLO NGEEGF LYEAGD PL" +
-                " NIMFRSU OG OIS CGKE GC OIS 'LSNGFU' DSOOSK, MFU OIS CGDDGWPFR EGLO NGEEGF LYEAGD PL NIMFRSU OG OIS CGKE GC OIS " +
-                "'OIPKU' DSOOSK, MFU LG GF, QFOPD WS MNNGQFO CGK MDD LYEAGDL GC OIS NKYHOGRKME WS WMFO OG LGDVS.";
+        //read cipher text file
+        FrequencyAnalysis frequencyAnalysis = new FrequencyAnalysis();
+        String cipherText = frequencyAnalysis.getCipherText("path");
+        System.out.println(cipherText);
+        analysis(cipherText);
+
+        System.out.println("Take replace rule"+"\n" + "1. Take replace rule" + "\n" + "2. Exit ");
+        Scanner sc = new Scanner(System.in);
+        int option = sc.nextInt();
+        if (option == 2 ){
+            System.exit(0);
+        }
+        System.out.println(cipherText);
 
 
+
+    }
+
+    public String getCipherText(String path) {
+        List<String> allLines = new ArrayList<String>();
+        try {
+            URI fileLocation = getClass().getResource("cipherText.txt").toURI();
+            allLines = Files.readAllLines(Paths.get(fileLocation));
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String line : allLines) {
+            stringBuilder.append(line);
+        }
+        String cipherText = stringBuilder.toString();
+        return cipherText;
+
+    }
+
+    public static void analysis(String cipherText)
+    {
         HashMap<Character, Integer> charFreq = new HashMap<>();
 
-        for (Character c : cipherText.toCharArray()){
-            charFreq.put(c, charFreq.getOrDefault(c, 0)+1);
+        for (Character c : cipherText.toCharArray()) {
+            charFreq.put(c, charFreq.getOrDefault(c, 0) + 1);
         }
-        for (Character c: charFreq.keySet()){
-            System.out.print(c +"->"+charFreq.get(c) +"  ");
+
+        for (Character c : charFreq.keySet()) {
+            System.out.print(c + "->" + charFreq.get(c) + "  ");
         }
     }
 
+
+
 }
+
