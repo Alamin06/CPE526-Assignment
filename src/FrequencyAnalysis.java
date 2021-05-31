@@ -21,10 +21,22 @@ public class FrequencyAnalysis {
         System.out.println("Take replace rule"+"\n" + "1. Take replace rule" + "\n" + "2. Exit ");
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
+
         if (option == 2 ){
             System.exit(0);
         }
-        System.out.println(cipherText);
+        System.out.println("Ciphertext:" + "\n" + cipherText);
+
+        String replacementMatchStr = "M:a,A:b,N:c,U:d,S:e,C:f, G:o, F:n, S:e";
+        String letters[]= replacementMatchStr.split(",");
+        String plaintext=cipherText;
+        for (String letter :letters) {
+            String[] match = letter.split(":");
+           plaintext = plaintext.replaceAll(match[0], match[1]);
+           // System.out.println(match[0]+" "+match[1]);
+            System.out.println("Plaintext" + "\n"+ plaintext);
+        }
+        System.out.println("Plaintext "+ plaintext);
 
 
 
