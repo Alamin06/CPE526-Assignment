@@ -7,8 +7,7 @@ public class PrimeNumbers {
         int number;
         int prime, composite;
         int factors;
-
-        ArrayList numList = new ArrayList();
+        
         System.out.println("Please give a number");
         Scanner sc = new Scanner(System.in);
         number = sc.nextInt();
@@ -41,25 +40,6 @@ public class PrimeNumbers {
 
 
 
-//
-//        if (number % 2== 0 && number!=2) {
-//            System.out.print(number + " is composite number and factors are => ");
-//
-//            for(int i = 2; i < number; i++){
-//                if(number%i==0){
-//                    System.out.print(i+",");
-//                    count++;
-//                }
-//            }
-//            System.out.println("\n" +"Our first method number of iteration is: " + count);
-//        }
-//        else {
-//            System.out.println( number + " is a prime number");
-//        }
-//
-//        for (int i = 2; i <= number; i++) {
-//
-//        }
     }
 }
 
