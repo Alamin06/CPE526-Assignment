@@ -27,7 +27,7 @@ public class FrequencyAnalysis {
         }
         System.out.println("Ciphertext:" + "\n" + cipherText);
 
-        String replacementMatchStr = "M:a,A:b,N:c,U:d,S:e,C:f, R:g, P:i, B:k, D:l, E:m, F:n, G:o, H:p, L:s, V:v, W:w, Y:y";
+        String replacementMatchStr = "M:a,A:b,N:c,U:d,S:e,C:f,R:g,I:h,P:i,B:k,D:l,E:m,F:n,G:o,H:p,J:q,K:r,L:s,O:t,Q:u,V:v,W:w,X:x,Y:y";
         String letters[]= replacementMatchStr.split(",");
         String plaintext=cipherText;
         for (String letter :letters) {
