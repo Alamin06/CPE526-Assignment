@@ -27,18 +27,16 @@ public class FrequencyAnalysis {
         }
         System.out.println("Ciphertext:" + "\n" + cipherText);
 
-        String replacementMatchStr = "M:a,A:b,N:c,U:d,S:e,C:f, G:o, F:n, S:e";
+        String replacementMatchStr = "M:a,A:b,N:c,U:d,S:e,C:f, R:g, P:i, B:k, D:l, E:m, F:n, G:o, H:p, L:s, V:v, W:w, Y:y";
         String letters[]= replacementMatchStr.split(",");
         String plaintext=cipherText;
         for (String letter :letters) {
             String[] match = letter.split(":");
            plaintext = plaintext.replaceAll(match[0], match[1]);
            // System.out.println(match[0]+" "+match[1]);
-            System.out.println("Plaintext" + "\n"+ plaintext);
+           // System.out.println("Plaintext" + "\n"+ plaintext);
         }
-        System.out.println("Plaintext "+ plaintext);
-
-
+        System.out.println("Plaintext "+"\n"+ plaintext);
 
     }
 
@@ -75,8 +73,6 @@ public class FrequencyAnalysis {
             System.out.print(c + "->" + charFreq.get(c) + "  ");
         }
     }
-
-
 
 }
 
